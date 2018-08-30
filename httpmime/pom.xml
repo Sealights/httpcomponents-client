@@ -28,7 +28,7 @@
   <parent>
     <groupId>org.apache.httpcomponents</groupId>
     <artifactId>httpcomponents-client</artifactId>
-    <version>4.5.7-SNAPSHOT</version>
+    <version>4.5.701</version>
   </parent>
   <artifactId>httpmime</artifactId>
   <name>Apache HttpClient Mime</name>
@@ -45,13 +45,12 @@
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
-    <!-- Not currently used
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    -->
+	<!--  Logging -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+	</dependency>
+	<!--  End Logging -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

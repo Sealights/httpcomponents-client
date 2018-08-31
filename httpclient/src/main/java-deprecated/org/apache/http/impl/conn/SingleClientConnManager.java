@@ -30,8 +30,8 @@ package org.apache.http.impl.conn;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.conn.ClientConnectionManager;
@@ -65,7 +65,7 @@ import org.apache.http.util.Asserts;
 @Deprecated
 public class SingleClientConnManager implements ClientConnectionManager {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The message to be logged on multiple allocation. */
     public final static String MISUSE_MESSAGE =

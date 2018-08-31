@@ -34,8 +34,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
@@ -90,7 +90,7 @@ import org.apache.http.util.Asserts;
 @Contract(threading = ThreadingBehavior.SAFE_CONDITIONAL)
 public class DefaultClientConnectionOperator implements ClientConnectionOperator {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The scheme registry for looking up socket factories. */
     protected final SchemeRegistry schemeRegistry; // @Contract(threading = ThreadingBehavior.SAFE)

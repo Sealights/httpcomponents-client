@@ -30,8 +30,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -53,6 +51,9 @@ import org.ietf.jgss.GSSException;
 import org.ietf.jgss.GSSManager;
 import org.ietf.jgss.GSSName;
 import org.ietf.jgss.Oid;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * @since 4.2
@@ -66,7 +67,7 @@ public abstract class GGSSchemeBase extends AuthSchemeBase {
         FAILED,
     }
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final Base64 base64codec;
     private final boolean stripPort;

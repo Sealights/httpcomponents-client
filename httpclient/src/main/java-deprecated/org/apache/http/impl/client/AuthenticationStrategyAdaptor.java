@@ -32,8 +32,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Queue;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -61,7 +61,7 @@ import org.apache.http.util.Args;
 @Deprecated
 class AuthenticationStrategyAdaptor implements AuthenticationStrategy {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final AuthenticationHandler handler;
 

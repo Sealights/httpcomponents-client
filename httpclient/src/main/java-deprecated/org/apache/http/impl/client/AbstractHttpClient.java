@@ -30,8 +30,8 @@ package org.apache.http.impl.client;
 import java.io.IOException;
 import java.lang.reflect.UndeclaredThrowableException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.ConnectionReuseStrategy;
 import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
@@ -198,7 +198,7 @@ import org.apache.http.util.Args;
 @Deprecated
 public abstract class AbstractHttpClient extends CloseableHttpClient {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private HttpParams defaultParams;
     private HttpRequestExecutor requestExec;

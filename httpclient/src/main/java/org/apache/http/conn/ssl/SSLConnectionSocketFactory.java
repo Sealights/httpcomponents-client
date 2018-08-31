@@ -47,8 +47,6 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
@@ -58,6 +56,9 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.Args;
 import org.apache.http.util.TextUtils;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Layered socket factory for TLS/SSL connections.
@@ -154,7 +155,7 @@ public class SSLConnectionSocketFactory implements LayeredConnectionSocketFactor
     public static final X509HostnameVerifier STRICT_HOSTNAME_VERIFIER
         = StrictHostnameVerifier.INSTANCE;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     /**
      * @since 4.4

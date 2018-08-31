@@ -28,8 +28,8 @@ package org.apache.http.impl.client.cache;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;
@@ -56,7 +56,7 @@ public class AsynchronousValidationRequest implements Runnable {
     private final String identifier;
     private final int consecutiveFailedAttempts;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * Used internally by {@link AsynchronousValidator} to schedule a

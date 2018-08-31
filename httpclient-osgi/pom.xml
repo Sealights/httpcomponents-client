@@ -26,11 +26,11 @@
  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.apache.httpcomponents</groupId>
+    <groupId>io.sealights.httpcomponents</groupId>
     <artifactId>httpcomponents-client</artifactId>
     <version>4.5.701</version>
   </parent>
-  <artifactId>httpclient-osgi</artifactId>
+  <artifactId>sl-httpclient-osgi</artifactId>
   <name>Apache HttpClient OSGi bundle</name>
   <inceptionYear>1999</inceptionYear>
   <description>
@@ -46,13 +46,13 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
+      <groupId>io.sealights.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
+      <groupId>io.sealights.httpcomponents</groupId>
       <artifactId>httpcore</artifactId>
       <scope>provided</scope>
     </dependency>
@@ -63,19 +63,19 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
+      <groupId>io.sealights.httpcomponents</groupId>
       <artifactId>httpmime</artifactId>
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient-cache</artifactId>
+      <groupId>io.sealights.httpcomponents</groupId>
+      <artifactId>sl-httpclient-cache</artifactId>
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
+      <groupId>io.sealights.httpcomponents</groupId>
       <artifactId>fluent-hc</artifactId>
       <version>${project.version}</version>
       <scope>compile</scope>

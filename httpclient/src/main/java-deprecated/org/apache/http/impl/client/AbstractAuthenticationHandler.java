@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.FormattedHeader;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -65,7 +65,7 @@ import org.apache.http.util.CharArrayBuffer;
 @Contract(threading = ThreadingBehavior.IMMUTABLE)
 public abstract class AbstractAuthenticationHandler implements AuthenticationHandler {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private static final List<String> DEFAULT_SCHEME_PRIORITY =
         Collections.unmodifiableList(Arrays.asList(new String[] {

@@ -38,8 +38,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.conn.ClientConnectionOperator;
 import org.apache.http.conn.ConnectionPoolTimeoutException;
 import org.apache.http.conn.OperatedClientConnection;
@@ -70,7 +70,7 @@ import org.apache.http.util.Asserts;
 @Deprecated
 public class ConnPoolByRoute extends AbstractConnPool {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final Lock poolLock;
 

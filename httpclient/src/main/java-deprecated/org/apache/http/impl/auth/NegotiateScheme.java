@@ -28,8 +28,8 @@ package org.apache.http.impl.auth;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.apache.http.auth.AuthenticationException;
@@ -50,7 +50,7 @@ import org.ietf.jgss.Oid;
 @Deprecated
 public class NegotiateScheme extends GGSSchemeBase {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private static final String SPNEGO_OID       = "1.3.6.1.5.5.2";
     private static final String KERBEROS_OID     = "1.2.840.113554.1.2.2";

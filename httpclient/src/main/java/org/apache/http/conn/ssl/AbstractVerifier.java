@@ -41,10 +41,11 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.conn.util.InetAddressUtils;
 import org.apache.http.util.Args;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Abstract base class for all standard {@link X509HostnameVerifier}
@@ -58,7 +59,7 @@ import org.apache.http.util.Args;
 @Deprecated
 public abstract class AbstractVerifier implements X509HostnameVerifier {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     final static String[] BAD_COUNTRY_2LDS =
             { "ac", "co", "com", "ed", "edu", "go", "gouv", "gov", "info",

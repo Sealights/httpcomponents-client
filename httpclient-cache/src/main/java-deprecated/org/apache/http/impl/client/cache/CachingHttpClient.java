@@ -43,8 +43,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
@@ -164,7 +164,7 @@ public class CachingHttpClient implements HttpClient {
 
     private final AsynchronousValidator asynchRevalidator;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     CachingHttpClient(
             final HttpClient client,
@@ -1026,7 +1026,7 @@ public class CachingHttpClient implements HttpClient {
         private final Set<String> queued;
         private final CacheKeyGenerator cacheKeyGenerator;
 
-        private final Log log = LogFactory.getLog(getClass());
+        private final Logger log = LoggerFactory.getLogger(getClass());
 
         /**
          * Create AsynchronousValidator which will make revalidation requests
@@ -1122,7 +1122,7 @@ public class CachingHttpClient implements HttpClient {
         private final HttpCacheEntry cacheEntry;
         private final String identifier;
 
-        private final Log log = LogFactory.getLog(getClass());
+        private final Logger log = LoggerFactory.getLogger(getClass());
 
         /**
          * Used internally by {@link AsynchronousValidator} to schedule a

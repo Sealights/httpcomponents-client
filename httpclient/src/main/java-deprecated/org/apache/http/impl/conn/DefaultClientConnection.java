@@ -36,8 +36,8 @@ import java.util.Map;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
@@ -67,9 +67,9 @@ import org.apache.http.util.Args;
 public class DefaultClientConnection extends SocketHttpClientConnection
     implements OperatedClientConnection, ManagedHttpClientConnection, HttpContext {
 
-    private final Log log = LogFactory.getLog(getClass());
-    private final Log headerLog = LogFactory.getLog("org.apache.http.headers");
-    private final Log wireLog = LogFactory.getLog("org.apache.http.wire");
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger headerLogger = LoggerFactory.getLogger("org.apache.http.headers");
+    private final Logger wireLogger = LoggerFactory.getLogger("org.apache.http.wire");
 
     /** The unconnected socket */
     private volatile Socket socket;
@@ -160,15 +160,15 @@ public class DefaultClientConnection extends SocketHttpClientConnection
         shutdown = true;
         try {
             super.shutdown();
-            if (log.isDebugEnabled()) {
-                log.debug("Connection " + this + " shut down");
+            if (logger.isDebugEnabled()) {
+                logger.debug("Connection " + this + " shut down");
             }
             final Socket sock = this.socket; // copy volatile attribute
             if (sock != null) {
                 sock.close();
             }
         } catch (final IOException ex) {
-            log.debug("I/O error shutting down connection", ex);
+            logger.debug("I/O error shutting down connection", ex);
         }
     }
 
@@ -176,11 +176,11 @@ public class DefaultClientConnection extends SocketHttpClientConnection
     public void close() throws IOException {
         try {
             super.close();
-            if (log.isDebugEnabled()) {
-                log.debug("Connection " + this + " closed");
+            if (logger.isDebugEnabled()) {
+                logger.debug("Connection " + this + " closed");
             }
         } catch (final IOException ex) {
-            log.debug("I/O error closing connection", ex);
+            logger.debug("I/O error closing connection", ex);
         }
     }
 
@@ -193,10 +193,10 @@ public class DefaultClientConnection extends SocketHttpClientConnection
                 socket,
                 bufferSize > 0 ? bufferSize : 8192,
                 params);
-        if (wireLog.isDebugEnabled()) {
+        if (wireLogger.isDebugEnabled()) {
             inBuffer = new LoggingSessionInputBuffer(
                     inBuffer,
-                    new Wire(wireLog),
+                    new Wire(wireLogger),
                     HttpProtocolParams.getHttpElementCharset(params));
         }
         return inBuffer;
@@ -211,10 +211,10 @@ public class DefaultClientConnection extends SocketHttpClientConnection
                 socket,
                 bufferSize > 0 ? bufferSize : 8192,
                 params);
-        if (wireLog.isDebugEnabled()) {
+        if (wireLogger.isDebugEnabled()) {
             outbuffer = new LoggingSessionOutputBuffer(
                     outbuffer,
-                    new Wire(wireLog),
+                    new Wire(wireLogger),
                     HttpProtocolParams.getHttpElementCharset(params));
         }
         return outbuffer;
@@ -255,14 +255,14 @@ public class DefaultClientConnection extends SocketHttpClientConnection
     @Override
     public HttpResponse receiveResponseHeader() throws HttpException, IOException {
         final HttpResponse response = super.receiveResponseHeader();
-        if (log.isDebugEnabled()) {
-            log.debug("Receiving response: " + response.getStatusLine());
+        if (logger.isDebugEnabled()) {
+            logger.debug("Receiving response: " + response.getStatusLine());
         }
-        if (headerLog.isDebugEnabled()) {
-            headerLog.debug("<< " + response.getStatusLine().toString());
+        if (headerLogger.isDebugEnabled()) {
+            headerLogger.debug("<< " + response.getStatusLine().toString());
             final Header[] headers = response.getAllHeaders();
             for (final Header header : headers) {
-                headerLog.debug("<< " + header.toString());
+                headerLogger.debug("<< " + header.toString());
             }
         }
         return response;
@@ -270,15 +270,15 @@ public class DefaultClientConnection extends SocketHttpClientConnection
 
     @Override
     public void sendRequestHeader(final HttpRequest request) throws HttpException, IOException {
-        if (log.isDebugEnabled()) {
-            log.debug("Sending request: " + request.getRequestLine());
+        if (logger.isDebugEnabled()) {
+            logger.debug("Sending request: " + request.getRequestLine());
         }
         super.sendRequestHeader(request);
-        if (headerLog.isDebugEnabled()) {
-            headerLog.debug(">> " + request.getRequestLine().toString());
+        if (headerLogger.isDebugEnabled()) {
+            headerLogger.debug(">> " + request.getRequestLine().toString());
             final Header[] headers = request.getAllHeaders();
             for (final Header header : headers) {
-                headerLog.debug(">> " + header.toString());
+                headerLogger.debug(">> " + header.toString());
             }
         }
     }

@@ -32,8 +32,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.conn.ClientConnectionManager;
@@ -73,7 +73,7 @@ import org.apache.http.util.Asserts;
 @Contract(threading = ThreadingBehavior.SAFE_CONDITIONAL)
 public class PoolingClientConnectionManager implements ClientConnectionManager, ConnPoolControl<HttpRoute> {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final SchemeRegistry schemeRegistry;
 

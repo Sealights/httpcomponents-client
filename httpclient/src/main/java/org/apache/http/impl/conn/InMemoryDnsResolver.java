@@ -32,10 +32,11 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.conn.DnsResolver;
 import org.apache.http.util.Args;
+
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
 
 /**
  * In-memory {@link DnsResolver} implementation.
@@ -45,7 +46,7 @@ import org.apache.http.util.Args;
 public class InMemoryDnsResolver implements DnsResolver {
 
     /** Logger associated to this class. */
-    private final Log log = LogFactory.getLog(InMemoryDnsResolver.class);
+    private final Logger log = CustomLoggerFactory.getLogger(InMemoryDnsResolver.class);
 
     /**
      * In-memory collection that will hold the associations between a host name

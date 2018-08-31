@@ -32,8 +32,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Queue;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
@@ -50,17 +48,20 @@ import org.apache.http.auth.MalformedChallengeException;
 import org.apache.http.client.AuthenticationStrategy;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Asserts;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * @since 4.3
  */
 public class HttpAuthenticator {
 
-    private final Log log;
+    private final Logger log;
 
-    public HttpAuthenticator(final Log log) {
+    public HttpAuthenticator(final Logger log) {
         super();
-        this.log = log != null ? log : LogFactory.getLog(getClass());
+        this.log = log != null ? log : CustomLoggerFactory.getLogger(getClass());
     }
 
     public HttpAuthenticator() {

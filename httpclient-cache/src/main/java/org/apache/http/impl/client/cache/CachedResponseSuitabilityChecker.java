@@ -28,8 +28,8 @@ package org.apache.http.impl.client.cache;
 
 import java.util.Date;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpHost;
@@ -50,7 +50,7 @@ import org.apache.http.client.utils.DateUtils;
 @Contract(threading = ThreadingBehavior.IMMUTABLE_CONDITIONAL)
 class CachedResponseSuitabilityChecker {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final boolean sharedCache;
     private final boolean useHeuristicCaching;

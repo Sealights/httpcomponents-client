@@ -36,8 +36,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.conn.ConnectionPoolTimeoutException;
 import org.apache.http.conn.OperatedClientConnection;
 import org.apache.http.conn.routing.HttpRoute;
@@ -58,7 +58,7 @@ import org.apache.http.util.Args;
 @Deprecated
 public abstract class AbstractConnPool {
 
-    private final Log log;
+    private final Logger log;
 
     /**
      * The global lock for this pool.
@@ -83,7 +83,7 @@ public abstract class AbstractConnPool {
      */
     protected AbstractConnPool() {
         super();
-        this.log = LogFactory.getLog(getClass());
+        this.log = LoggerFactory.getLogger(getClass());
         this.leasedConnections = new HashSet<BasicPoolEntry>();
         this.idleConnHandler = new IdleConnectionHandler();
         this.poolLock = new ReentrantLock();

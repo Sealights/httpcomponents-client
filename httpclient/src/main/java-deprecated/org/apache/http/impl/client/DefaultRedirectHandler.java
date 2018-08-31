@@ -30,8 +30,8 @@ package org.apache.http.impl.client;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -63,7 +63,7 @@ import org.apache.http.util.Asserts;
 @Deprecated
 public class DefaultRedirectHandler implements RedirectHandler {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private static final String REDIRECT_LOCATIONS = "http.protocol.redirect-locations";
 

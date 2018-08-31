@@ -26,8 +26,8 @@
  */
 package org.apache.http.impl.client.cache;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpRequest;
@@ -45,7 +45,7 @@ import org.apache.http.client.cache.HeaderConstants;
 @Contract(threading = ThreadingBehavior.IMMUTABLE)
 class CacheableRequestPolicy {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * Determines if an HttpRequest can be served from the cache.

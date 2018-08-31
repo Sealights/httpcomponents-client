@@ -29,8 +29,8 @@ package org.apache.http.impl.conn.tsccm;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.conn.ClientConnectionManager;
@@ -71,7 +71,7 @@ import org.apache.http.util.Asserts;
 @Deprecated
 public class ThreadSafeClientConnManager implements ClientConnectionManager {
 
-    private final Log log;
+    private final Logger log;
 
     /** The schemes supported by this connection manager. */
     protected final SchemeRegistry schemeRegistry; // @Contract(threading = ThreadingBehavior.SAFE)
@@ -132,7 +132,7 @@ public class ThreadSafeClientConnManager implements ClientConnectionManager {
             final long connTTL, final TimeUnit connTTLTimeUnit, final ConnPerRouteBean connPerRoute) {
         super();
         Args.notNull(schreg, "Scheme registry");
-        this.log = LogFactory.getLog(getClass());
+        this.log = LoggerFactory.getLogger(getClass());
         this.schemeRegistry = schreg;
         this.connPerRoute = connPerRoute;
         this.connOperator = createConnectionOperator(schreg);
@@ -152,7 +152,7 @@ public class ThreadSafeClientConnManager implements ClientConnectionManager {
     public ThreadSafeClientConnManager(final HttpParams params,
                                        final SchemeRegistry schreg) {
         Args.notNull(schreg, "Scheme registry");
-        this.log = LogFactory.getLog(getClass());
+        this.log = LoggerFactory.getLogger(getClass());
         this.schemeRegistry = schreg;
         this.connPerRoute = new ConnPerRouteBean();
         this.connOperator = createConnectionOperator(schreg);

@@ -35,12 +35,13 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.Consts;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.util.Args;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * {@link org.apache.http.conn.util.PublicSuffixMatcher} loader.
@@ -89,7 +90,7 @@ public final class PublicSuffixMatcherLoader {
                             DEFAULT_INSTANCE = load(url);
                         } catch (final IOException ex) {
                             // Should never happen
-                            final Log log = LogFactory.getLog(PublicSuffixMatcherLoader.class);
+                            final Logger log = CustomLoggerFactory.getLogger(PublicSuffixMatcherLoader.class);
                             if (log.isWarnEnabled()) {
                                 log.warn("Failure loading public suffix list from default resource", ex);
                             }

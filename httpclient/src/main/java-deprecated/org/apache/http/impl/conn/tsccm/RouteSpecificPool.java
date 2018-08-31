@@ -31,8 +31,8 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Queue;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.conn.OperatedClientConnection;
 import org.apache.http.conn.params.ConnPerRoute;
 import org.apache.http.conn.routing.HttpRoute;
@@ -53,7 +53,7 @@ import org.apache.http.util.LangUtils;
 @Deprecated
 public class RouteSpecificPool {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The route this pool is for. */
     protected final HttpRoute route; //Immutable

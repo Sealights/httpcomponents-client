@@ -34,7 +34,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpClientConnection;
 import org.apache.http.HttpHost;
 import org.apache.http.client.protocol.HttpClientContext;
@@ -56,6 +55,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * {@link PoolingHttpClientConnectionManager} tests.
@@ -95,7 +96,7 @@ public class TestPoolingHttpClientConnectionManager {
         final HttpHost target = new HttpHost("localhost", 80);
         final HttpRoute route = new HttpRoute(target);
 
-        final CPoolEntry entry = new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS);
         entry.markRouteComplete();
 
@@ -124,7 +125,7 @@ public class TestPoolingHttpClientConnectionManager {
         final HttpHost target = new HttpHost("localhost", 80);
         final HttpRoute route = new HttpRoute(target);
 
-        final CPoolEntry entry = new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS);
 
         Mockito.when(future.isCancelled()).thenReturn(Boolean.FALSE);
@@ -152,7 +153,7 @@ public class TestPoolingHttpClientConnectionManager {
         final HttpHost target = new HttpHost("localhost", 80);
         final HttpRoute route = new HttpRoute(target);
 
-        final CPoolEntry entry = new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS);
         entry.markRouteComplete();
 
@@ -182,7 +183,7 @@ public class TestPoolingHttpClientConnectionManager {
         final HttpHost target = new HttpHost("localhost", 80);
         final HttpRoute route = new HttpRoute(target);
 
-        final CPoolEntry entry = Mockito.spy(new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = Mockito.spy(new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS));
         entry.markRouteComplete();
 
@@ -208,7 +209,7 @@ public class TestPoolingHttpClientConnectionManager {
         final HttpHost target = new HttpHost("localhost", 80);
         final HttpRoute route = new HttpRoute(target);
 
-        final CPoolEntry entry = Mockito.spy(new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = Mockito.spy(new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS));
         entry.markRouteComplete();
 
@@ -236,7 +237,7 @@ public class TestPoolingHttpClientConnectionManager {
         final InetAddress local = InetAddress.getByAddress(new byte[]{127, 0, 0, 1});
         final HttpRoute route = new HttpRoute(target, local, true);
 
-        final CPoolEntry entry = new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS);
         entry.markRouteComplete();
         Mockito.when(future.isCancelled()).thenReturn(Boolean.FALSE);
@@ -286,7 +287,7 @@ public class TestPoolingHttpClientConnectionManager {
         final InetAddress local = InetAddress.getByAddress(new byte[] {127, 0, 0, 1});
         final HttpRoute route = new HttpRoute(target, local, proxy, true);
 
-        final CPoolEntry entry = new CPoolEntry(LogFactory.getLog(getClass()), "id", route, conn,
+        final CPoolEntry entry = new CPoolEntry(CustomLoggerFactory.getLogger(getClass()), "id", route, conn,
                 -1, TimeUnit.MILLISECONDS);
         entry.markRouteComplete();
         Mockito.when(future.isCancelled()).thenReturn(Boolean.FALSE);

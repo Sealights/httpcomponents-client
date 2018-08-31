@@ -34,8 +34,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -70,7 +70,7 @@ class BasicHttpCache implements HttpCache {
     private final HttpCacheInvalidator cacheInvalidator;
     private final HttpCacheStorage storage;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     public BasicHttpCache(
             final ResourceFactory resourceFactory,

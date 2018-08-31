@@ -33,8 +33,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.ConnectionReuseStrategy;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
@@ -133,7 +133,7 @@ import org.apache.http.util.EntityUtils;
 @Deprecated
 public class DefaultRequestDirector implements RequestDirector {
 
-    private final Log log;
+    private final Logger log;
 
     /** The connection manager. */
     protected final ClientConnectionManager connManager;
@@ -214,7 +214,7 @@ public class DefaultRequestDirector implements RequestDirector {
             final AuthenticationHandler proxyAuthHandler,
             final UserTokenHandler userTokenHandler,
             final HttpParams params) {
-        this(LogFactory.getLog(DefaultRequestDirector.class),
+        this(LoggerFactory.getLogger(DefaultRequestDirector.class),
                 requestExec, conman, reustrat, kastrat, rouplan, httpProcessor, retryHandler,
                 new DefaultRedirectStrategyAdaptor(redirectHandler),
                 new AuthenticationStrategyAdaptor(targetAuthHandler),
@@ -226,7 +226,7 @@ public class DefaultRequestDirector implements RequestDirector {
 
     @Deprecated
     public DefaultRequestDirector(
-            final Log log,
+            final Logger log,
             final HttpRequestExecutor requestExec,
             final ClientConnectionManager conman,
             final ConnectionReuseStrategy reustrat,
@@ -239,7 +239,7 @@ public class DefaultRequestDirector implements RequestDirector {
             final AuthenticationHandler proxyAuthHandler,
             final UserTokenHandler userTokenHandler,
             final HttpParams params) {
-        this(LogFactory.getLog(DefaultRequestDirector.class),
+        this(LoggerFactory.getLogger(DefaultRequestDirector.class),
                 requestExec, conman, reustrat, kastrat, rouplan, httpProcessor, retryHandler,
                 redirectStrategy,
                 new AuthenticationStrategyAdaptor(targetAuthHandler),
@@ -252,7 +252,7 @@ public class DefaultRequestDirector implements RequestDirector {
      * @since 4.2
      */
     public DefaultRequestDirector(
-            final Log log,
+            final Logger log,
             final HttpRequestExecutor requestExec,
             final ClientConnectionManager conman,
             final ConnectionReuseStrategy reustrat,

@@ -34,8 +34,6 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpClientConnection;
 import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
@@ -61,6 +59,9 @@ import org.apache.http.util.Args;
 import org.apache.http.util.Asserts;
 import org.apache.http.util.LangUtils;
 
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
+
 /**
  * A connection manager for a single connection. This connection manager maintains only one active
  * connection. Even though this class is fully thread-safe it ought to be used by one execution
@@ -82,7 +83,7 @@ import org.apache.http.util.LangUtils;
 @Contract(threading = ThreadingBehavior.SAFE_CONDITIONAL)
 public class BasicHttpClientConnectionManager implements HttpClientConnectionManager, Closeable {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final HttpClientConnectionOperator connectionOperator;
     private final HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connFactory;

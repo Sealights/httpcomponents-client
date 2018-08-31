@@ -31,8 +31,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpMessage;
@@ -60,7 +60,7 @@ class ResponseCachingPolicy {
     private final long maxObjectSizeBytes;
     private final boolean sharedCache;
     private final boolean neverCache1_0ResponsesWithQueryString;
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private static final Set<Integer> cacheableStatuses =
         new HashSet<Integer>(Arrays.asList(HttpStatus.SC_OK,
                 HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION,

@@ -29,8 +29,8 @@ package org.apache.http.impl.conn;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.HttpException;
 import org.apache.http.HttpMessage;
 import org.apache.http.HttpResponseFactory;
@@ -66,7 +66,7 @@ import org.apache.http.util.CharArrayBuffer;
 @Contract(threading = ThreadingBehavior.SAFE_CONDITIONAL)
 public class DefaultResponseParser extends AbstractMessageParser<HttpMessage> {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final HttpResponseFactory responseFactory;
     private final CharArrayBuffer lineBuf;

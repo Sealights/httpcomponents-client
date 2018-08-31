@@ -33,8 +33,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.client.cache.HttpCacheEntry;
 import org.apache.http.client.methods.HttpExecutionAware;
 import org.apache.http.client.methods.HttpRequestWrapper;
@@ -51,7 +51,7 @@ class AsynchronousValidator implements Closeable {
     private final CacheKeyGenerator cacheKeyGenerator;
     private final FailureCache failureCache;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * Create AsynchronousValidator which will make revalidation requests

@@ -51,13 +51,14 @@ import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.conn.util.DomainType;
 import org.apache.http.conn.util.InetAddressUtils;
 import org.apache.http.conn.util.PublicSuffixMatcher;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Default {@link javax.net.ssl.HostnameVerifier} implementation.
@@ -79,7 +80,7 @@ public final class DefaultHostnameVerifier implements HostnameVerifier {
 
     }
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final PublicSuffixMatcher publicSuffixMatcher;
 

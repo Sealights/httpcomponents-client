@@ -31,8 +31,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Locale;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -56,6 +54,9 @@ import org.apache.http.util.Args;
 import org.apache.http.util.Asserts;
 import org.apache.http.util.TextUtils;
 
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
+
 /**
  * Default implementation of {@link RedirectStrategy}. This strategy honors the restrictions
  * on automatic redirection of entity enclosing methods such as POST and PUT imposed by the
@@ -74,7 +75,7 @@ import org.apache.http.util.TextUtils;
 @Contract(threading = ThreadingBehavior.IMMUTABLE)
 public class DefaultRedirectStrategy implements RedirectStrategy {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     /**
      * @deprecated (4.3) use {@link org.apache.http.client.protocol.HttpClientContext#REDIRECT_LOCATIONS}.

@@ -28,8 +28,8 @@ package org.apache.http.osgi.impl;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.NTCredentials;
@@ -42,7 +42,7 @@ import org.apache.http.osgi.services.ProxyConfiguration;
  */
 final class OSGiCredentialsProvider implements CredentialsProvider {
 
-    private static final Log log = LogFactory.getLog(OSGiCredentialsProvider.class);
+    private static final Logger log = LoggerFactory.getLogger(OSGiCredentialsProvider.class);
 
     private static final int HOST_AND_PORT_MATCH = 12;
 

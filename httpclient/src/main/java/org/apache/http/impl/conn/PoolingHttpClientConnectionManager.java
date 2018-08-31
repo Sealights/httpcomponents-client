@@ -37,8 +37,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpClientConnection;
 import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
@@ -67,6 +65,9 @@ import org.apache.http.pool.PoolStats;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Args;
 import org.apache.http.util.Asserts;
+
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
 
 /**
  * {@code ClientConnectionPoolManager} maintains a pool of
@@ -103,7 +104,7 @@ import org.apache.http.util.Asserts;
 public class PoolingHttpClientConnectionManager
     implements HttpClientConnectionManager, ConnPoolControl<HttpRoute>, Closeable {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final ConfigData configData;
     private final CPool pool;

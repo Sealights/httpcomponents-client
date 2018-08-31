@@ -31,8 +31,8 @@ import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.URI;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -64,7 +64,7 @@ public class AutoRetryHttpClient implements HttpClient {
 
     private final ServiceUnavailableRetryStrategy retryStrategy;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     public AutoRetryHttpClient(
             final HttpClient client, final ServiceUnavailableRetryStrategy retryStrategy) {

@@ -35,8 +35,8 @@ import net.spy.memcached.MemcachedClient;
 import net.spy.memcached.MemcachedClientIF;
 import net.spy.memcached.OperationTimeoutException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.client.cache.HttpCacheEntry;
 import org.apache.http.client.cache.HttpCacheEntrySerializer;
 import org.apache.http.client.cache.HttpCacheStorage;
@@ -93,7 +93,7 @@ import org.apache.http.impl.client.cache.CacheConfig;
  */
 public class MemcachedHttpCacheStorage implements HttpCacheStorage {
 
-    private static final Log log = LogFactory.getLog(MemcachedHttpCacheStorage.class);
+    private static final Logger log = LoggerFactory.getLogger(MemcachedHttpCacheStorage.class);
 
     private final MemcachedClientIF client;
     private final KeyHashingScheme keyHashingScheme;

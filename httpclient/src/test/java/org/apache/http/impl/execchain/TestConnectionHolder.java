@@ -29,7 +29,6 @@ package org.apache.http.impl.execchain;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
 import org.apache.http.HttpClientConnection;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.junit.Assert;
@@ -37,17 +36,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import org.slf4j.Logger;
+
 @SuppressWarnings({"static-access"}) // test code
 public class TestConnectionHolder {
 
-    private Log log;
+    private Logger log;
     private HttpClientConnectionManager mgr;
     private HttpClientConnection conn;
     private ConnectionHolder connHolder;
 
     @Before
     public void setup() {
-        log = Mockito.mock(Log.class);
+        log = Mockito.mock(Logger.class);
         mgr = Mockito.mock(HttpClientConnectionManager.class);
         conn = Mockito.mock(HttpClientConnection.class);
         connHolder = new ConnectionHolder(log, mgr, conn);

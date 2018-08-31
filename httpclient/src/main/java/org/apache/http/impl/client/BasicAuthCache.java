@@ -35,8 +35,6 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
@@ -46,6 +44,9 @@ import org.apache.http.conn.SchemePortResolver;
 import org.apache.http.conn.UnsupportedSchemeException;
 import org.apache.http.impl.conn.DefaultSchemePortResolver;
 import org.apache.http.util.Args;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Default implementation of {@link org.apache.http.client.AuthCache}. This implements
@@ -60,7 +61,7 @@ import org.apache.http.util.Args;
 @Contract(threading = ThreadingBehavior.SAFE)
 public class BasicAuthCache implements AuthCache {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final Map<HttpHost, byte[]> map;
     private final SchemePortResolver schemePortResolver;

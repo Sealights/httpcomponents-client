@@ -29,8 +29,6 @@ package org.apache.http.client.protocol;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -47,6 +45,9 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.conn.routing.RouteInfo;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Args;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Request interceptor that can preemptively authenticate against known hosts,
@@ -58,7 +59,7 @@ import org.apache.http.util.Args;
 @Contract(threading = ThreadingBehavior.IMMUTABLE)
 public class RequestAuthCache implements HttpRequestInterceptor {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     public RequestAuthCache() {
         super();

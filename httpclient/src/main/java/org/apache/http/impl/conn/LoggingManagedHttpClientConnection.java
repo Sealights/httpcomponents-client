@@ -34,7 +34,6 @@ import java.net.Socket;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 
-import org.apache.commons.logging.Log;
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -43,17 +42,19 @@ import org.apache.http.entity.ContentLengthStrategy;
 import org.apache.http.io.HttpMessageParserFactory;
 import org.apache.http.io.HttpMessageWriterFactory;
 
+import org.slf4j.Logger;
+
 class LoggingManagedHttpClientConnection extends DefaultManagedHttpClientConnection {
 
-    private final Log log;
-    private final Log headerLog;
+    private final Logger log;
+    private final Logger headerLog;
     private final Wire wire;
 
     public LoggingManagedHttpClientConnection(
             final String id,
-            final Log log,
-            final Log headerLog,
-            final Log wireLog,
+            final Logger log,
+            final Logger headerLog,
+            final Logger wireLog,
             final int bufferSize,
             final int fragmentSizeHint,
             final CharsetDecoder charDecoder,

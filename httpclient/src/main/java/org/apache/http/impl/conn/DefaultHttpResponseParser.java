@@ -29,8 +29,6 @@ package org.apache.http.impl.conn;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpResponseFactory;
@@ -47,6 +45,9 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.util.Args;
 import org.apache.http.util.CharArrayBuffer;
 
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
+
 /**
  * Lenient HTTP response parser implementation that can skip malformed data until
  * a valid HTTP response message head is encountered.
@@ -56,7 +57,7 @@ import org.apache.http.util.CharArrayBuffer;
 @SuppressWarnings("deprecation")
 public class DefaultHttpResponseParser extends AbstractMessageParser<HttpResponse> {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final HttpResponseFactory responseFactory;
     private final CharArrayBuffer lineBuf;

@@ -34,8 +34,6 @@ import java.net.NoRouteToHostException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
@@ -54,6 +52,9 @@ import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Args;
 
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
+
 /**
  * Default implementation of {@link HttpClientConnectionOperator} used as default in Http client,
  * when no instance provided by user to {@link BasicHttpClientConnectionManager} or {@link
@@ -66,7 +67,7 @@ public class DefaultHttpClientConnectionOperator implements HttpClientConnection
 
     static final String SOCKET_FACTORY_REGISTRY = "http.socket-factory-registry";
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final Lookup<ConnectionSocketFactory> socketFactoryRegistry;
     private final SchemePortResolver schemePortResolver;

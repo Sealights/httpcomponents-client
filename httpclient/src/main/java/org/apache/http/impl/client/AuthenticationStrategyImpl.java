@@ -37,8 +37,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Queue;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.FormattedHeader;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
@@ -62,11 +60,14 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Args;
 import org.apache.http.util.CharArrayBuffer;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 @Contract(threading = ThreadingBehavior.IMMUTABLE)
 abstract class AuthenticationStrategyImpl implements AuthenticationStrategy {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private static final List<String> DEFAULT_SCHEME_PRIORITY =
         Collections.unmodifiableList(Arrays.asList(

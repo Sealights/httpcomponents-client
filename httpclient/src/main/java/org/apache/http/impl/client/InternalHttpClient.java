@@ -32,8 +32,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -68,6 +66,9 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Args;
 
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
+
 /**
  * Internal class.
  *
@@ -77,7 +78,7 @@ import org.apache.http.util.Args;
 @SuppressWarnings("deprecation")
 class InternalHttpClient extends CloseableHttpClient implements Configurable {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final ClientExecChain execChain;
     private final HttpClientConnectionManager connManager;

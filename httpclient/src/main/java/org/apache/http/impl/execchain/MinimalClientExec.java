@@ -34,8 +34,6 @@ import java.net.URISyntaxException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.ConnectionReuseStrategy;
 import org.apache.http.HttpClientConnection;
 import org.apache.http.HttpEntity;
@@ -69,6 +67,9 @@ import org.apache.http.protocol.RequestUserAgent;
 import org.apache.http.util.Args;
 import org.apache.http.util.VersionInfo;
 
+import org.slf4j.Logger;
+import custom.logging.CustomLoggerFactory;
+
 /**
  * Request executor that implements the most fundamental aspects of
  * the HTTP specification and the most straight-forward request / response
@@ -81,7 +82,7 @@ import org.apache.http.util.VersionInfo;
 @Contract(threading = ThreadingBehavior.IMMUTABLE_CONDITIONAL)
 public class MinimalClientExec implements ClientExecChain {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final HttpRequestExecutor requestExecutor;
     private final HttpClientConnectionManager connManager;

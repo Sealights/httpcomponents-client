@@ -31,8 +31,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -58,7 +58,7 @@ class CacheInvalidator implements HttpCacheInvalidator {
     private final HttpCacheStorage storage;
     private final CacheKeyGenerator cacheKeyGenerator;
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * Create a new {@link CacheInvalidator} for a given {@link HttpCache} and

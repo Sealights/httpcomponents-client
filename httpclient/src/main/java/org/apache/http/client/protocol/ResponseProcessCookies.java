@@ -30,8 +30,6 @@ package org.apache.http.client.protocol;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
 import org.apache.http.HeaderIterator;
 import org.apache.http.HttpException;
@@ -47,6 +45,9 @@ import org.apache.http.cookie.MalformedCookieException;
 import org.apache.http.cookie.SM;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.Args;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Response interceptor that populates the current {@link CookieStore} with data
@@ -57,7 +58,7 @@ import org.apache.http.util.Args;
 @Contract(threading = ThreadingBehavior.IMMUTABLE)
 public class ResponseProcessCookies implements HttpResponseInterceptor {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     public ResponseProcessCookies() {
         super();

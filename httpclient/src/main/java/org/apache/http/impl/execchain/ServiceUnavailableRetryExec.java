@@ -30,8 +30,6 @@ package org.apache.http.impl.execchain;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpException;
 import org.apache.http.annotation.Contract;
@@ -43,6 +41,9 @@ import org.apache.http.client.methods.HttpRequestWrapper;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.util.Args;
+import org.slf4j.Logger;
+
+import custom.logging.CustomLoggerFactory;
 
 /**
  * Request executor in the request execution chain that is responsible
@@ -59,7 +60,7 @@ import org.apache.http.util.Args;
 @Contract(threading = ThreadingBehavior.IMMUTABLE_CONDITIONAL)
 public class ServiceUnavailableRetryExec implements ClientExecChain {
 
-    private final Log log = LogFactory.getLog(getClass());
+    private final Logger log = CustomLoggerFactory.getLogger(getClass());
 
     private final ClientExecChain requestExecutor;
     private final ServiceUnavailableRetryStrategy retryStrategy;

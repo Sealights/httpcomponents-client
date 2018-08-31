@@ -29,8 +29,8 @@ package org.apache.http.client.protocol;
 
 import java.util.Queue;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpRequestInterceptor;
@@ -46,7 +46,7 @@ import org.apache.http.util.Asserts;
 @Deprecated
 abstract class RequestAuthenticationBase implements HttpRequestInterceptor {
 
-    final Log log = LogFactory.getLog(getClass());
+    final Logger log = LoggerFactory.getLogger(getClass());
 
     public RequestAuthenticationBase() {
         super();

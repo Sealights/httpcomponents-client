@@ -13,7 +13,7 @@ The following changes were done:
 * Since the package 'custom.logging' was added in the httpcomponents-core, the httpcomponent-client classes 
   were modified and use classes Logger and CustomLoggerFactory. More info about 'custom.logging' could be found in the 'httpcomponents-core' release notes.
 
-Note: The project build should be done with the option -DskipTests=true.
+Note: The project build should be done with the option -DskipTests=true. This is due to the fact that the original tests were broken.
 -----
 
 Release 4.5.7

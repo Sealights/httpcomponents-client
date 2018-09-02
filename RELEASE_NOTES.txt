@@ -12,6 +12,12 @@ The following changes were done:
 * The commons-logging and slf4j-jcl dependencies were replaced with slj4j-api dependencies.
 * Since the package 'custom.logging' was added in the httpcomponents-core, the httpcomponent-client classes 
   were modified and use classes Logger and CustomLoggerFactory. More info about 'custom.logging' could be found in the 'httpcomponents-core' release notes.
+* Added profiles: 
+*	the default profile with id=testSkip - builds the jars without tests 
+*   the profilewith id=publish - for deployment jars to sealights nexus
+
+The build and deployment should be done as following:
+mvn deploy -P testSkip,publish
 
 Note: The project build should be done with the option -DskipTests=true. This is due to the fact that the original tests were broken.
 -----

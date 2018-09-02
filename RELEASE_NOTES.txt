@@ -1,7 +1,7 @@
 Release 4.5.701 - Sealights internal
 -------------------
 This is a private Sealights version, made on base of branch 4.5.x.
-Version number 4.4.1001 reflects the base version 4.5.7; two last digits serves for Sealights versions.
+Version number 4.5.701 reflects the base version 4.5.7; two last digits serves for Sealights versions.
 
 The Sealights private version excludes commons-logging dependencies, since them caused problems in using of test-listener with JBOSS framework.
 

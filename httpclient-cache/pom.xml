@@ -30,7 +30,7 @@
     <artifactId>httpcomponents-client</artifactId>
     <version>4.5.701</version>
   </parent>
-  <artifactId>sl-httpclient-cache</artifactId>
+  <artifactId>httpclient-cache</artifactId>
   <name>Apache HttpClient Cache</name>
   <inceptionYear>2010</inceptionYear>
   <description>

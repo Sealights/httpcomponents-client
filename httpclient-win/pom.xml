@@ -31,7 +31,7 @@
     <artifactId>httpcomponents-client</artifactId>
     <version>4.5.701</version>
   </parent>
-  <artifactId>sl-httpclient-win</artifactId>
+  <artifactId>httpclient-win</artifactId>
   <name>Apache HttpClient Windows features</name>
   <description>
    Apache HttpClient Windows specific functionality

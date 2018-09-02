@@ -30,7 +30,7 @@
     <artifactId>httpcomponents-client</artifactId>
     <version>4.5.701</version>
   </parent>
-  <artifactId>sl-httpclient-osgi</artifactId>
+  <artifactId>httpclient-osgi</artifactId>
   <name>Apache HttpClient OSGi bundle</name>
   <inceptionYear>1999</inceptionYear>
   <description>
@@ -70,7 +70,7 @@
     </dependency>
     <dependency>
       <groupId>io.sealights.httpcomponents</groupId>
-      <artifactId>sl-httpclient-cache</artifactId>
+      <artifactId>httpclient-cache</artifactId>
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
